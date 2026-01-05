@@ -16,6 +16,11 @@ public class Tarefa {
     private String descricao;
     private boolean ativa;
 
+    public Tarefa(TarefaAdicionarDTO dados) {
+        this.titulo = dados.titulo();
+        this.descricao = dados.descricao();
+    }
+
     public Long getId() {
         return id;
     }

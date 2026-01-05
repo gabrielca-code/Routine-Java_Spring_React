@@ -27,7 +27,7 @@ public class TarefaController {
 
     @PostMapping
     public void addTarefa(@RequestBody TarefaAdicionarDTO dados) {
-
+        tarefaRepository.save(new Tarefa(dados));
     }
 
 }
