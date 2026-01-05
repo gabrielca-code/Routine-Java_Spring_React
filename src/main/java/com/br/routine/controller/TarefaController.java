@@ -20,6 +20,8 @@ public class TarefaController {
     public List<Tarefa> getAll() {
         List<Tarefa> tarefas = tarefaRepository.findAll();
 
+        System.out.println(tarefas);
+
         return tarefas;
     }
 
