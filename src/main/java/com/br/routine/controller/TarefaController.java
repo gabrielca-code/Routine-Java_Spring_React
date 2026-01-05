@@ -1,16 +1,26 @@
 package com.br.routine.controller;
 
+import com.br.routine.model.tarefa.Tarefa;
+import com.br.routine.repository.TarefaRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("Tarefa")
+@RequestMapping("tarefa")
 public class TarefaController {
 
-    @GetMapping
-    public void getAll() {
+    @Autowired
+    private TarefaRepository tarefaRepository;
 
+    @GetMapping
+    public List<Tarefa> getAll() {
+        List<Tarefa> tarefas = tarefaRepository.findAll();
+
+        return tarefas;
     }
 
 }
