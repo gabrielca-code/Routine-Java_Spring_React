@@ -31,6 +31,8 @@ public class TarefaController {
         var tarefa = new Tarefa(dados);
 
         tarefaRepository.save(tarefa);
+
+        return;
     }
 
 }
