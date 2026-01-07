@@ -16,6 +16,7 @@ public class TarefaController {
     @Autowired
     private TarefaRepository tarefaRepository;
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping
     public List<TarefaListagemDTO> getAll() {
         List<TarefaListagemDTO> tarefas = tarefaRepository.findAll().stream().map(TarefaListagemDTO::new).toList();
@@ -27,7 +28,9 @@ public class TarefaController {
 
     @PostMapping
     public void addTarefa(@RequestBody TarefaAdicionarDTO dados) {
-        tarefaRepository.save(new Tarefa(dados));
+        var tarefa = new Tarefa(dados);
+
+        tarefaRepository.save(tarefa);
     }
 
 }

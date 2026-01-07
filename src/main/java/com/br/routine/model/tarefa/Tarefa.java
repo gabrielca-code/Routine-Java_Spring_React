@@ -16,6 +16,10 @@ public class Tarefa {
     private String descricao;
     private boolean ativa;
 
+    public Tarefa() {}
+
+
+
     public Tarefa(TarefaAdicionarDTO dados) {
         this.titulo = dados.titulo();
         this.descricao = dados.descricao();
