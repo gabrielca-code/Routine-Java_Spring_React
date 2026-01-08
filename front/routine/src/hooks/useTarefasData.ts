@@ -16,5 +16,8 @@ export function useTarefaData() {
         retry: 2
     })
 
-    
+    return {
+        ...query,
+        data: query.data?.data
+    }
 }
