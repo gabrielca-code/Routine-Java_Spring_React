@@ -1,5 +1,6 @@
 import axios, { type AxiosPromise } from "axios"
 import type { TarefaData } from "../interface/tarefaData"
+import { useQuery } from "@tanstack/react-query"
 
 const API_URL = 'http://localhost:8080'
 
@@ -9,5 +10,11 @@ const fetchData = async (): AxiosPromise<TarefaData[]> => {
 }
 
 export function useTarefaData() {
+    const query = useQuery({
+        queryFn: fetchData,
+        queryKey: ['tarefa-data'],
+        retry: 2
+    })
+
     
 }
