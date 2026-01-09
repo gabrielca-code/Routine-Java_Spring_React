@@ -4,9 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity(name = "tarefa")
+@Entity(name = "Tarefa")
 @Table(name = "tarefa")
-@Getter
 public class Tarefa {
 
     @Id
@@ -17,8 +16,6 @@ public class Tarefa {
     private boolean ativa;
 
     public Tarefa() {}
-
-
 
     public Tarefa(TarefaAdicionarDTO dados) {
         this.titulo = dados.titulo();
