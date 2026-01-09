@@ -1,4 +1,4 @@
-package com.br.routine.model.tarefa;
+package com.br.routine.model.usuario;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
