@@ -14,6 +14,11 @@ public class Usuario {
 
     public Usuario() {}
 
+    public Usuario(UsuarioAdicionarDTO dados) {
+        this.login = dados.login();
+        this.senha = dados.senha();
+    }
+
     public Long getId() {
         return id;
     }
