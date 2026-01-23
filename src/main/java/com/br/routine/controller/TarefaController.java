@@ -35,4 +35,14 @@ public class TarefaController {
         return;
     }
 
+    @PutMapping
+    public void updateTarefa() {
+        return;
+    }
+
+    @DeleteMapping
+    public void deleteTarefa() {
+        return;
+    }
+
 }
