@@ -28,4 +28,14 @@ public class UsuarioController {
         usuarioRepository.save(usuario);
     }
 
+    @PutMapping
+    public void updateUsuario() {
+        return;
+    }
+
+    @DeleteMapping
+    public void deleteUsuario() {
+        return;
+    }
+
 }
