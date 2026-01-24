@@ -1,5 +1,6 @@
 package com.br.routine.model.subtarefa;
 
+import com.br.routine.model.tarefa.Tarefa;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
@@ -9,6 +10,7 @@ public class Subtarefa {
 
     private Long id;
     private String titulo;
+    private Tarefa tarefa;
 
     public Subtarefa() {}
 
@@ -23,5 +25,9 @@ public class Subtarefa {
 
     public String getTitulo() {
         return titulo;
+    }
+
+    public Tarefa getTarefa() {
+        return tarefa;
     }
 }
