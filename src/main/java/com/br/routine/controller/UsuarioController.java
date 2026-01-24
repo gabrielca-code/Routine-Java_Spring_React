@@ -7,6 +7,7 @@ import com.br.routine.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -23,7 +24,7 @@ public class UsuarioController {
     }
 
     @PostMapping
-    public void addUsuario(@RequestBody UsuarioAdicionarDTO dados) {
+    public void addUsuario(@RequestBody @Valid UsuarioAdicionarDTO dados) {
         var usuario = new Usuario(dados);
         usuarioRepository.save(usuario);
     }
