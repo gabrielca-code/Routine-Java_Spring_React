@@ -6,6 +6,8 @@ public record UsuarioAdicionarDTO(
         @NotBlank
         String login,
         @NotBlank
-        String senha
+        String senha,
+        @NotBlank
+        String nome
 ) {
 }
