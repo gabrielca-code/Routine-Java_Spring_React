@@ -11,6 +11,7 @@ public class Usuario {
     private String login;
     private String senha;
     private boolean ativa;
+    private String nome;
 
     public Usuario() {}
 
@@ -34,4 +35,6 @@ public class Usuario {
     public boolean isAtiva() {
         return ativa;
     }
+
+    public String getNome() { return nome; }
 }
