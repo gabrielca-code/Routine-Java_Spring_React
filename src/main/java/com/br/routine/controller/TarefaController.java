@@ -7,6 +7,7 @@ import com.br.routine.repository.TarefaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -27,7 +28,7 @@ public class TarefaController {
     }
 
     @PostMapping
-    public void addTarefa(@RequestBody TarefaAdicionarDTO dados) {
+    public void addTarefa(@RequestBody @Valid TarefaAdicionarDTO dados) {
         var tarefa = new Tarefa(dados);
 
         tarefaRepository.save(tarefa);
