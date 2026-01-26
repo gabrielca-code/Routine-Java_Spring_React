@@ -24,4 +24,9 @@ public class SubtarefaController {
         subtarefaRepository.save(subtarefa);
     }
 
+    @DeleteMapping("/{id}")
+    public void removerTarefa(@PathVariable Long id) {
+        subtarefaRepository.deleteById(id);
+    }
+
 }
