@@ -31,7 +31,7 @@ public class Subtarefa {
         return tarefa;
     }
 
-    public void editar(Subtarefa subtarefa) {
+    public void editar(SubtarefaEditarDTO subtarefa) {
         this.titulo = subtarefa.titulo;
     }
 }

@@ -1,6 +1,7 @@
 package com.br.routine.controller;
 
 import com.br.routine.model.subtarefa.Subtarefa;
+import com.br.routine.model.subtarefa.SubtarefaEditarDTO;
 import com.br.routine.repository.SubtarefaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -30,8 +31,8 @@ public class SubtarefaController {
     }
 
     @PutMapping
-    public void editarSubtarefa(@RequestBody Subtarefa subtarefa) {
-        var subtarefaAtual = subtarefaRepository.getReferenceById(subtarefa.getId());
+    public void editarSubtarefa(@RequestBody SubtarefaEditarDTO subtarefa) {
+        var subtarefaAtual = subtarefaRepository.getReferenceById(subtarefa.id());
         subtarefaAtual.editar(subtarefa);
     }
 
