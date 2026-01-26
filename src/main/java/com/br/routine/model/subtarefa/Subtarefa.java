@@ -30,4 +30,8 @@ public class Subtarefa {
     public Tarefa getTarefa() {
         return tarefa;
     }
+
+    public void editar(Subtarefa subtarefa) {
+        this.titulo = subtarefa.titulo;
+    }
 }

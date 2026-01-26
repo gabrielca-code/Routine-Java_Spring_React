@@ -25,8 +25,14 @@ public class SubtarefaController {
     }
 
     @DeleteMapping("/{id}")
-    public void removerTarefa(@PathVariable Long id) {
+    public void removerSubtarefa(@PathVariable Long id) {
         subtarefaRepository.deleteById(id);
+    }
+
+    @PutMapping
+    public void editarSubtarefa(@RequestBody Subtarefa subtarefa) {
+        var subtarefaAtual = subtarefaRepository.getReferenceById(subtarefa.getId());
+        subtarefaAtual.editar(subtarefa);
     }
 
 }
