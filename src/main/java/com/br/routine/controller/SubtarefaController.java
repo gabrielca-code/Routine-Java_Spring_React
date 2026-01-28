@@ -23,17 +23,20 @@ public class SubtarefaController {
     @PostMapping
     public void adicionarSubtarefa(@RequestBody Subtarefa subtarefa) {
         subtarefaRepository.save(subtarefa);
+        return;
     }
 
     @DeleteMapping("/{id}")
     public void removerSubtarefa(@PathVariable Long id) {
         subtarefaRepository.deleteById(id);
+        return;
     }
 
     @PutMapping
     public void editarSubtarefa(@RequestBody SubtarefaEditarDTO subtarefa) {
         var subtarefaAtual = subtarefaRepository.getReferenceById(subtarefa.id());
         subtarefaAtual.editar(subtarefa);
+        return;
     }
 
 }
