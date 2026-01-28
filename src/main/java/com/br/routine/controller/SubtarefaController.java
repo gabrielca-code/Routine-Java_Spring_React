@@ -16,12 +16,12 @@ public class SubtarefaController {
     SubtarefaRepository subtarefaRepository;
 
     @GetMapping
-    public List<Subtarefa> listAllSubtarefas() {
+    public List<Subtarefa> listarTodasSubtarefas() {
         return subtarefaRepository.findAll();
     }
 
     @PostMapping
-    public void addSubtarefa(@RequestBody Subtarefa subtarefa) {
+    public void adicionarSubtarefa(@RequestBody Subtarefa subtarefa) {
         subtarefaRepository.save(subtarefa);
     }
 

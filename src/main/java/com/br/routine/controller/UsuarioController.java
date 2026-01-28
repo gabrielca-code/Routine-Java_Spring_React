@@ -18,24 +18,24 @@ public class UsuarioController {
     private UsuarioRepository usuarioRepository;
 
     @GetMapping("/{id}")
-    public UsuarioListagemDTO getUsuario(@PathVariable Long id) {
+    public UsuarioListagemDTO obterUsuarioPeloId(@PathVariable Long id) {
         var usuario = usuarioRepository.getReferenceById(id);
         return new UsuarioListagemDTO(usuario);
     }
 
     @PostMapping
-    public void addUsuario(@RequestBody @Valid UsuarioAdicionarDTO dados) {
+    public void adicionarUsuario(@RequestBody @Valid UsuarioAdicionarDTO dados) {
         var usuario = new Usuario(dados);
         usuarioRepository.save(usuario);
     }
 
     @PutMapping
-    public void updateUsuario() {
+    public void editarUsuario() {
         return;
     }
 
     @DeleteMapping
-    public void deleteUsuario() {
+    public void removerUsuario() {
         return;
     }
 

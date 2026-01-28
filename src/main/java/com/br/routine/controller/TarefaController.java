@@ -19,16 +19,14 @@ public class TarefaController {
 
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping
-    public List<TarefaListagemDTO> getAll() {
+    public List<TarefaListagemDTO> listarTodasTarefas() {
         List<TarefaListagemDTO> tarefas = tarefaRepository.findAll().stream().map(TarefaListagemDTO::new).toList();
-
-        System.out.println(tarefas);
 
         return tarefas;
     }
 
     @PostMapping
-    public void addTarefa(@RequestBody @Valid TarefaAdicionarDTO dados) {
+    public void adicionarTarefa(@RequestBody @Valid TarefaAdicionarDTO dados) {
         var tarefa = new Tarefa(dados);
 
         tarefaRepository.save(tarefa);
@@ -37,12 +35,12 @@ public class TarefaController {
     }
 
     @PutMapping
-    public void updateTarefa() {
+    public void editarTarefa() {
         return;
     }
 
     @DeleteMapping
-    public void deleteTarefa() {
+    public void removerTarefa() {
         return;
     }
 

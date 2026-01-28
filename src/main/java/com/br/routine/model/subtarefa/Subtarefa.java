@@ -32,6 +32,6 @@ public class Subtarefa {
     }
 
     public void editar(SubtarefaEditarDTO subtarefa) {
-        this.titulo = subtarefa.titulo;
+        this.titulo = subtarefa.titulo();
     }
 }
