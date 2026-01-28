@@ -38,8 +38,11 @@ public class UsuarioController {
         return;
     }
 
-    @DeleteMapping
-    public void removerUsuario() {
+    @DeleteMapping("/{id}")
+    public void removerUsuario(@PathVariable Long id) {
+        var usuario = usuarioRepository.getReferenceById(id);
+        usuarioRepository.delete(usuario); //remoção física
+
         return;
     }
 
