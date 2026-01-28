@@ -11,6 +11,7 @@ public record UsuarioEditarDTO(
         @NotBlank
         String senha,
         @NotBlank
-        String nome
+        String nome,
+        boolean ativa
 ) {
 }

@@ -2,6 +2,7 @@ package com.br.routine.controller;
 
 import com.br.routine.model.usuario.Usuario;
 import com.br.routine.model.usuario.UsuarioAdicionarDTO;
+import com.br.routine.model.usuario.UsuarioEditarDTO;
 import com.br.routine.model.usuario.UsuarioListagemDTO;
 import com.br.routine.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,10 @@ public class UsuarioController {
     }
 
     @PutMapping
-    public void editarUsuario() {
+    public void editarUsuario(@RequestBody UsuarioEditarDTO dados) {
+        var usuario = usuarioRepository.getReferenceById(dados.id());
+        usuario.editar(dados);
+
         return;
     }
 

@@ -37,4 +37,11 @@ public class Usuario {
     }
 
     public String getNome() { return nome; }
+
+    public void editar(UsuarioEditarDTO dados) {
+        this.login = dados.login();
+        this.senha = dados.senha();
+        this.ativa = dados.ativa();
+        this.nome = dados.nome();
+    }
 }
