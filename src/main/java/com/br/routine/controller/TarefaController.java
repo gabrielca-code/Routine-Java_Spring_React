@@ -2,6 +2,7 @@ package com.br.routine.controller;
 
 import com.br.routine.model.tarefa.Tarefa;
 import com.br.routine.model.tarefa.TarefaAdicionarDTO;
+import com.br.routine.model.tarefa.TarefaEditarDTO;
 import com.br.routine.model.tarefa.TarefaListagemDTO;
 import com.br.routine.repository.TarefaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,10 @@ public class TarefaController {
     }
 
     @PutMapping
-    public void editarTarefa() {
+    public void editarTarefa(@RequestBody TarefaEditarDTO dados) {
+        var tarefa = tarefaRepository.getReferenceById(dados.id());
+        tarefa.editar(dados);
+
         return;
     }
 
