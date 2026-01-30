@@ -45,7 +45,7 @@ public class TarefaController {
 
     @DeleteMapping("/{id}")
     public void removerTarefa(@PathVariable Long id) {
-        tarefaRepository.deleteById(id);
+        tarefaRepository.deleteById(id); //remoção física
 
         return;
     }
