@@ -38,4 +38,8 @@ public class Tarefa {
         return ativa;
     }
 
+    public void editar(TarefaEditarDTO dados) {
+        this.titulo = dados.titulo();
+        this.descricao = dados.descricao();
+    }
 }
