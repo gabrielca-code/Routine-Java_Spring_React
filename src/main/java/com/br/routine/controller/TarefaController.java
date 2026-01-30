@@ -43,8 +43,10 @@ public class TarefaController {
         return;
     }
 
-    @DeleteMapping
-    public void removerTarefa() {
+    @DeleteMapping("/{id}")
+    public void removerTarefa(@PathVariable Long id) {
+        tarefaRepository.deleteById(id);
+
         return;
     }
 
