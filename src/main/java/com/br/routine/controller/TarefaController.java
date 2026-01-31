@@ -42,7 +42,7 @@ public class TarefaController {
 
     @PutMapping
     @Transactional
-    public ResponseEntity editarTarefa(@RequestBody TarefaEditarDTO dados) {
+    public ResponseEntity editarTarefa(@RequestBody @Valid TarefaEditarDTO dados) {
         var tarefa = tarefaRepository.getReferenceById(dados.id());
         tarefa.editar(dados);
 

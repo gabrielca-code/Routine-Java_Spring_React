@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -25,7 +26,7 @@ public class SubtarefaController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity adicionarSubtarefa(@RequestBody Subtarefa subtarefa, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity adicionarSubtarefa(@RequestBody @Valid Subtarefa subtarefa, UriComponentsBuilder uriBuilder) {
         var subtarefaCriada = subtarefaRepository.save(subtarefa);
 
         var uri = uriBuilder.path("/subtarefa/{id}").buildAndExpand(subtarefaCriada.getId()).toUri();
@@ -42,7 +43,7 @@ public class SubtarefaController {
 
     @PutMapping
     @Transactional
-    public ResponseEntity editarSubtarefa(@RequestBody SubtarefaEditarDTO subtarefa) {
+    public ResponseEntity editarSubtarefa(@RequestBody @Valid  SubtarefaEditarDTO subtarefa) {
         var subtarefaAtual = subtarefaRepository.getReferenceById(subtarefa.id());
         subtarefaAtual.editar(subtarefa);
 

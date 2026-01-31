@@ -40,7 +40,7 @@ public class UsuarioController {
 
     @PutMapping
     @Transactional
-    public ResponseEntity editarUsuario(@RequestBody UsuarioEditarDTO dados) {
+    public ResponseEntity editarUsuario(@RequestBody @Valid UsuarioEditarDTO dados) {
         var usuario = usuarioRepository.getReferenceById(dados.id());
         usuario.editar(dados);
 
