@@ -3,8 +3,11 @@ package com.br.routine.controller;
 import com.br.routine.model.subtarefa.Subtarefa;
 import com.br.routine.model.subtarefa.SubtarefaEditarDTO;
 import com.br.routine.repository.SubtarefaRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
 
@@ -21,22 +24,29 @@ public class SubtarefaController {
     }
 
     @PostMapping
-    public void adicionarSubtarefa(@RequestBody Subtarefa subtarefa) {
-        subtarefaRepository.save(subtarefa);
-        return;
+    @Transactional
+    public ResponseEntity adicionarSubtarefa(@RequestBody Subtarefa subtarefa, UriComponentsBuilder uriBuilder) {
+        var subtarefaCriada = subtarefaRepository.save(subtarefa);
+
+        var uri = uriBuilder.path("/subtarefa/{id}").buildAndExpand(subtarefaCriada.getId()).toUri();
+        return ResponseEntity.created(uri).body(subtarefaCriada);
     }
 
     @DeleteMapping("/{id}")
-    public void removerSubtarefa(@PathVariable Long id) {
+    @Transactional
+    public ResponseEntity removerSubtarefa(@PathVariable Long id) {
         subtarefaRepository.deleteById(id);
-        return;
+
+        return ResponseEntity.noContent().build();
     }
 
     @PutMapping
-    public void editarSubtarefa(@RequestBody SubtarefaEditarDTO subtarefa) {
+    @Transactional
+    public ResponseEntity editarSubtarefa(@RequestBody SubtarefaEditarDTO subtarefa) {
         var subtarefaAtual = subtarefaRepository.getReferenceById(subtarefa.id());
         subtarefaAtual.editar(subtarefa);
-        return;
+
+        return ResponseEntity.ok(subtarefaAtual);
     }
 
 }
