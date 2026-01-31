@@ -5,8 +5,11 @@ import com.br.routine.model.usuario.UsuarioAdicionarDTO;
 import com.br.routine.model.usuario.UsuarioEditarDTO;
 import com.br.routine.model.usuario.UsuarioListagemDTO;
 import com.br.routine.repository.UsuarioRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -19,31 +22,38 @@ public class UsuarioController {
     private UsuarioRepository usuarioRepository;
 
     @GetMapping("/{id}")
-    public UsuarioListagemDTO obterUsuarioPeloId(@PathVariable Long id) {
+    public ResponseEntity obterUsuarioPeloId(@PathVariable Long id) {
         var usuario = usuarioRepository.getReferenceById(id);
-        return new UsuarioListagemDTO(usuario);
+        return ResponseEntity.ok(new UsuarioListagemDTO(usuario));
     }
 
     @PostMapping
-    public void adicionarUsuario(@RequestBody @Valid UsuarioAdicionarDTO dados) {
+    @Transactional
+    public ResponseEntity adicionarUsuario(@RequestBody @Valid UsuarioAdicionarDTO dados, UriComponentsBuilder uriBuilder) {
         var usuario = new Usuario(dados);
         usuarioRepository.save(usuario);
+
+        var uri = uriBuilder.path("/usuario/{id}").buildAndExpand(usuario.getId()).toUri();
+
+        return ResponseEntity.created(uri).body(new UsuarioListagemDTO(usuario));
     }
 
     @PutMapping
-    public void editarUsuario(@RequestBody UsuarioEditarDTO dados) {
+    @Transactional
+    public ResponseEntity editarUsuario(@RequestBody UsuarioEditarDTO dados) {
         var usuario = usuarioRepository.getReferenceById(dados.id());
         usuario.editar(dados);
 
-        return;
+        return ResponseEntity.ok(new UsuarioListagemDTO(usuario));
     }
 
     @DeleteMapping("/{id}")
-    public void removerUsuario(@PathVariable Long id) {
+    @Transactional
+    public ResponseEntity removerUsuario(@PathVariable Long id) {
         var usuario = usuarioRepository.getReferenceById(id);
         usuarioRepository.delete(usuario); //remoção física
 
-        return;
+        return ResponseEntity.noContent().build();
     }
 
 }
