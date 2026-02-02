@@ -7,6 +7,9 @@ import com.br.routine.model.tarefa.TarefaListagemDTO;
 import com.br.routine.repository.TarefaRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -23,10 +26,10 @@ public class TarefaController {
 
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping
-    public List<TarefaListagemDTO> listarTodasTarefas() {
-        List<TarefaListagemDTO> tarefas = tarefaRepository.findAll().stream().map(TarefaListagemDTO::new).toList();
+    public ResponseEntity<Page<TarefaListagemDTO>> listarTodasTarefas(@PageableDefault(size = 10, sort = {"titulo"}) Pageable paginacao) {
+        var tarefas = tarefaRepository.findAll(paginacao).map(TarefaListagemDTO::new);
 
-        return tarefas;
+        return ResponseEntity.ok(tarefas);
     }
 
     @PostMapping
