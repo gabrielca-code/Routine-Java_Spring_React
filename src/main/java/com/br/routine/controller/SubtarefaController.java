@@ -19,7 +19,7 @@ public class SubtarefaController {
     @Autowired
     SubtarefaRepository subtarefaRepository;
 
-    @GetMapping
+    @GetMapping("/{id}")
     public List<Subtarefa> listarTodasSubtarefas() {
         return subtarefaRepository.findAll();
     }
