@@ -7,6 +7,9 @@ import com.br.routine.model.usuario.UsuarioListagemDTO;
 import com.br.routine.repository.UsuarioRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -28,9 +31,9 @@ public class UsuarioController {
     }
 
     @GetMapping
-    public void obterTodosUsuarios() {
-        var usuarios = usuarioRepository.findAll().stream().map(UsuarioListagemDTO::new);
-        return;
+    public ResponseEntity<Page<UsuarioListagemDTO>> obterTodosUsuarios(@PageableDefault(size = 10) Pageable paginacao) {
+        var usuarios = usuarioRepository.findAll(paginacao).map(UsuarioListagemDTO::new);
+        return ResponseEntity.ok(usuarios);
     }
 
     @PostMapping
