@@ -27,6 +27,12 @@ public class UsuarioController {
         return ResponseEntity.ok(new UsuarioListagemDTO(usuario));
     }
 
+    @GetMapping
+    public void obterTodosUsuarios() {
+        var usuarios = usuarioRepository.findAll().stream().map(UsuarioListagemDTO::new);
+        return;
+    }
+
     @PostMapping
     @Transactional
     public ResponseEntity adicionarUsuario(@RequestBody @Valid UsuarioAdicionarDTO dados, UriComponentsBuilder uriBuilder) {
