@@ -14,6 +14,8 @@ public class Tarefa {
     private Long id;
     private String titulo;
     private String descricao;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idUsuario")
     private Usuario usuario;
     private boolean ativa;
 
@@ -34,6 +36,10 @@ public class Tarefa {
 
     public String getDescricao() {
         return descricao;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
     }
 
     public boolean isAtiva() {
