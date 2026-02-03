@@ -7,8 +7,7 @@ import javax.validation.constraints.NotBlank;
 public record TarefaAdicionarDTO(
         @NotBlank
         String titulo,
-        String descricao,
+        String descricao
         //Adicionar usuario
-        boolean ativa
         ) {
 }

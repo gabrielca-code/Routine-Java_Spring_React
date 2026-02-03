@@ -5,7 +5,7 @@ public record TarefaListagemDTO(
         String titulo,
         String descricao,
         //Adicionar usuario
-        boolean ativa
+        Boolean ativa
 ) {
 
     public TarefaListagemDTO(Tarefa tarefa) {
