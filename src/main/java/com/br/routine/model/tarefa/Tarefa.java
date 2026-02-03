@@ -47,7 +47,9 @@ public class Tarefa {
     }
 
     public void editar(TarefaEditarDTO dados) {
-        this.titulo = dados.titulo();
-        this.descricao = dados.descricao();
+        if(dados.titulo() != null)
+            this.titulo = dados.titulo();
+        if(dados.descricao() != null)
+            this.descricao = dados.descricao();
     }
 }

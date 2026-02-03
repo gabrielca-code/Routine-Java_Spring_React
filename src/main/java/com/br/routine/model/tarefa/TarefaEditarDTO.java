@@ -6,7 +6,6 @@ import javax.validation.constraints.NotNull;
 public record TarefaEditarDTO(
         @NotNull
         Long id,
-        @NotBlank
         String titulo,
         String descricao
 ) {
