@@ -4,7 +4,7 @@ use routinedb;
 
 create table if not exists usuario(
 	id int primary key auto_increment,
-    login varchar(30) not null,
+    login varchar(30) not null unique,
     senha varchar(30) not null,
     nome varchar(255) not null,
     ativa boolean default true
@@ -24,7 +24,13 @@ create table if not exists subtarefa(
     foreign key (idTarefa) references tarefa(id)
 );
 
-insert into tarefa(titulo, descricao) values ('Teste1', 'Teste1'), ('Teste2', 'Teste2');
+insert into usuario(login, senha, nome) values
+('admin', 'admin', 'Usuario 1'),
+('login', 'senha', 'Usuario 2');
+
+insert into tarefa(titulo, descricao) values
+('Teste1', 'Teste1'), 
+('Teste2', 'Teste2');
 select * from tarefa;
 
 insert into subtarefa(titulo, idTarefa) values
