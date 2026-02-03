@@ -19,6 +19,8 @@ public class Usuario {
     public Usuario(UsuarioAdicionarDTO dados) {
         this.login = dados.login();
         this.senha = dados.senha();
+        this.nome = dados.nome();
+        this.ativa = true;
     }
 
     public Long getId() {
