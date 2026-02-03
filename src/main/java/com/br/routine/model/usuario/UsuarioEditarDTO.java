@@ -9,6 +9,6 @@ public record UsuarioEditarDTO(
         String login,
         String senha,
         String nome,
-        boolean ativa
+        Boolean ativa
 ) {
 }

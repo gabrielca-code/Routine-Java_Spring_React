@@ -11,7 +11,7 @@ public class Usuario {
     private Long id;
     private String login;
     private String senha;
-    private boolean ativa;
+    private Boolean ativa;
     private String nome;
 
     public Usuario() {}
@@ -35,16 +35,19 @@ public class Usuario {
         return senha;
     }
 
-    public boolean isAtiva() {
+    public Boolean isAtiva() {
         return ativa;
     }
 
     public String getNome() { return nome; }
 
     public void editar(UsuarioEditarDTO dados) {
-        this.login = dados.login();
-        this.senha = dados.senha();
-        this.ativa = dados.ativa();
+        if(dados.login().isBlank())
+            this.login = dados.login();
+        if(dados.senha().isBlank())
+            this.senha = dados.senha();
+        if(dados.ativa() == null)
+            this.ativa = dados.ativa();
         this.nome = dados.nome();
     }
 }

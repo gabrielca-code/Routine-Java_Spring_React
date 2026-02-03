@@ -17,7 +17,7 @@ public class Tarefa {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idUsuario")
     private Usuario usuario;
-    private boolean ativa;
+    private Boolean ativa;
 
     public Tarefa() {}
 
