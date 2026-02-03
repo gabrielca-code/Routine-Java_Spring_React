@@ -6,7 +6,7 @@ public record UsuarioListagemDTO(
         Long id,
         String login,
         String nome,
-        Boolean isAtiva
+        Boolean ativa
 
 ) {
 
