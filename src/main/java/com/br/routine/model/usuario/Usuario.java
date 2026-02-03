@@ -2,7 +2,7 @@ package com.br.routine.model.usuario;
 
 import jakarta.persistence.*;
 
-@Entity(name = "Usuario")
+@Entity(name = "usuario")
 @Table(name = "usuario")
 public class Usuario {
 
