@@ -1,15 +1,19 @@
 package com.br.routine.model.subtarefa;
 
 import com.br.routine.model.tarefa.Tarefa;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity(name = "subtarefa")
 @Table(name = "subtarefa")
 public class Subtarefa {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String titulo;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idTarefa")
     private Tarefa tarefa;
 
     public Subtarefa() {}

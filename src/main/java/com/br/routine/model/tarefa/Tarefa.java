@@ -1,5 +1,6 @@
 package com.br.routine.model.tarefa;
 
+import com.br.routine.model.usuario.Usuario;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,6 +14,7 @@ public class Tarefa {
     private Long id;
     private String titulo;
     private String descricao;
+    private Usuario usuario;
     private boolean ativa;
 
     public Tarefa() {}
