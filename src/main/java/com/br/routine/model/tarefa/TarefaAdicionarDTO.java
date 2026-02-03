@@ -8,6 +8,7 @@ public record TarefaAdicionarDTO(
         @NotBlank
         String titulo,
         String descricao,
+        //Adicionar usuario
         boolean ativa
         ) {
 }

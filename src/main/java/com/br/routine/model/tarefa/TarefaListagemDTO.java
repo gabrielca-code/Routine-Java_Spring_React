@@ -4,6 +4,7 @@ public record TarefaListagemDTO(
         Long id,
         String titulo,
         String descricao,
+        //Adicionar usuario
         boolean ativa
 ) {
 
