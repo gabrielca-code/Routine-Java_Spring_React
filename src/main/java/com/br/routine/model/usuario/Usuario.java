@@ -42,12 +42,13 @@ public class Usuario {
     public String getNome() { return nome; }
 
     public void editar(UsuarioEditarDTO dados) {
-        if(dados.login().isBlank())
+        if(!dados.login().isBlank())
             this.login = dados.login();
-        if(dados.senha().isBlank())
+        if(!dados.senha().isBlank())
             this.senha = dados.senha();
-        if(dados.ativa() == null)
+        if(dados.ativa() != null)
             this.ativa = dados.ativa();
-        this.nome = dados.nome();
+        if(!dados.nome().isBlank())
+            this.nome = dados.nome();
     }
 }
