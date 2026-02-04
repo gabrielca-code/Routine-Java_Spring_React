@@ -9,6 +9,8 @@ import lombok.Setter;
 @Table(name = "tarefa")
 public class Tarefa {
 
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,6 +26,8 @@ public class Tarefa {
     public Tarefa(TarefaAdicionarDTO dados) {
         this.titulo = dados.titulo();
         this.descricao = dados.descricao();
+        this.usuario = dados.idUsuario();
+        this.ativa = true;
     }
 
     public Long getId() {
@@ -51,5 +55,9 @@ public class Tarefa {
             this.titulo = dados.titulo();
         if(dados.descricao() != null)
             this.descricao = dados.descricao();
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

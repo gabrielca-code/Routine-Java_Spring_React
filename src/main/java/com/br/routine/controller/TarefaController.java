@@ -5,6 +5,7 @@ import com.br.routine.model.tarefa.TarefaAdicionarDTO;
 import com.br.routine.model.tarefa.TarefaEditarDTO;
 import com.br.routine.model.tarefa.TarefaListagemDTO;
 import com.br.routine.repository.TarefaRepository;
+import com.br.routine.repository.UsuarioRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -23,6 +24,9 @@ public class TarefaController {
 
     @Autowired
     private TarefaRepository tarefaRepository;
+
+    @Autowired
+    private UsuarioRepository usuarioRepository;
 
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping
@@ -43,6 +47,9 @@ public class TarefaController {
     public ResponseEntity adicionarTarefa(@RequestBody @Valid TarefaAdicionarDTO dados, UriComponentsBuilder uriBuilder) {
         var tarefa = new Tarefa(dados);
         tarefaRepository.save(tarefa);
+
+        var usuario = usuarioRepository.getReferenceById(dados.idUsuario().getId());
+        tarefa.setUsuario(usuario);
 
         var uri = uriBuilder.path("/tarefa/{id}").buildAndExpand(tarefa.getId()).toUri();
 
