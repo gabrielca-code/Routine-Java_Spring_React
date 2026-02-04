@@ -26,7 +26,7 @@ public class Tarefa {
     public Tarefa(TarefaAdicionarDTO dados) {
         this.titulo = dados.titulo();
         this.descricao = dados.descricao();
-        this.usuario = dados.idUsuario();
+        this.usuario = dados.usuario();
         this.ativa = true;
     }
 

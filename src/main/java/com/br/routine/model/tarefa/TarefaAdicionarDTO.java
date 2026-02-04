@@ -9,6 +9,6 @@ public record TarefaAdicionarDTO(
         @NotBlank
         String titulo,
         String descricao,
-        Usuario idUsuario
+        Usuario usuario
         ) {
 }

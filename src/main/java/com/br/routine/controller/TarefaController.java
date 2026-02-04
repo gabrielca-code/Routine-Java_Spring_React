@@ -48,7 +48,7 @@ public class TarefaController {
         var tarefa = new Tarefa(dados);
         tarefaRepository.save(tarefa);
 
-        var usuario = usuarioRepository.getReferenceById(dados.idUsuario().getId());
+        var usuario = usuarioRepository.getReferenceById(dados.usuario().getId());
         tarefa.setUsuario(usuario);
 
         var uri = uriBuilder.path("/tarefa/{id}").buildAndExpand(tarefa.getId()).toUri();
