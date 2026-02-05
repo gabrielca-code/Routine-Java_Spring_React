@@ -46,11 +46,11 @@ public class SubtarefaController {
 
     @PutMapping
     @Transactional
-    public ResponseEntity editarSubtarefa(@RequestBody @Valid  SubtarefaEditarDTO subtarefa) {
-        var subtarefaAtual = subtarefaRepository.getReferenceById(subtarefa.id());
-        subtarefaAtual.editar(subtarefa);
+    public ResponseEntity editarSubtarefa(@RequestBody @Valid  SubtarefaEditarDTO dados) {
+        var subtarefa = subtarefaRepository.getReferenceById(dados.id());
+        subtarefa.editar(dados);
 
-        return ResponseEntity.ok(subtarefaAtual);
+        return ResponseEntity.ok(new SubtarefaListagemDTO(subtarefa));
     }
 
 }
