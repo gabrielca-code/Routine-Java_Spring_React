@@ -22,13 +22,14 @@ public class SubtarefaController {
     SubtarefaRepository subtarefaRepository;
 
     @GetMapping("/{id}")
-    public List<Subtarefa> listarTodasSubtarefas() {
-        return subtarefaRepository.findAll();
+    public ResponseEntity<List<?>> listarTodasSubtarefas(@PathVariable Long id) {
+        var subtarefas = subtarefaRepository.findAll().stream().map(SubtarefaListagemDTO::new).toList();
+        return ResponseEntity.ok(subtarefas);
     }
 
     @PostMapping
     @Transactional
-    public ResponseEntity adicionarSubtarefa(@RequestBody @Valid SubtarefaAdicionarDTO dados, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<?> adicionarSubtarefa(@RequestBody @Valid SubtarefaAdicionarDTO dados, UriComponentsBuilder uriBuilder) {
         var subtarefa = new Subtarefa(dados);
         var subtarefaCriada = subtarefaRepository.save(subtarefa);
 
@@ -38,7 +39,7 @@ public class SubtarefaController {
 
     @DeleteMapping("/{id}")
     @Transactional
-    public ResponseEntity removerSubtarefa(@PathVariable Long id) {
+    public ResponseEntity<?> removerSubtarefa(@PathVariable Long id) {
         subtarefaRepository.deleteById(id);
 
         return ResponseEntity.noContent().build();
@@ -46,7 +47,7 @@ public class SubtarefaController {
 
     @PutMapping
     @Transactional
-    public ResponseEntity editarSubtarefa(@RequestBody @Valid  SubtarefaEditarDTO dados) {
+    public ResponseEntity<?> editarSubtarefa(@RequestBody @Valid  SubtarefaEditarDTO dados) {
         var subtarefa = subtarefaRepository.getReferenceById(dados.id());
         subtarefa.editar(dados);
 

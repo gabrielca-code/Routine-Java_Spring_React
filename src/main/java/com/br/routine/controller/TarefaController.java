@@ -30,21 +30,21 @@ public class TarefaController {
 
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping
-    public ResponseEntity<Page<TarefaListagemDTO>> obterTodasTarefas(@PageableDefault(size = 10, sort = {"titulo"}) Pageable paginacao) {
+    public ResponseEntity<Page<?>> obterTodasTarefas(@PageableDefault(size = 10, sort = {"titulo"}) Pageable paginacao) {
         var tarefas = tarefaRepository.findAll(paginacao).map(TarefaListagemDTO::new);
 
         return ResponseEntity.ok(tarefas);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<TarefaListagemDTO> obterTarefa(@PathVariable Long id) {
+    public ResponseEntity<?> obterTarefa(@PathVariable Long id) {
         var tarefa = tarefaRepository.getReferenceById(id);
         return ResponseEntity.ok().body(new TarefaListagemDTO(tarefa));
     }
 
     @PostMapping
     @Transactional
-    public ResponseEntity adicionarTarefa(@RequestBody @Valid TarefaAdicionarDTO dados, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<?> adicionarTarefa(@RequestBody @Valid TarefaAdicionarDTO dados, UriComponentsBuilder uriBuilder) {
         var tarefa = new Tarefa(dados);
         tarefaRepository.save(tarefa);
 
@@ -58,7 +58,7 @@ public class TarefaController {
 
     @PutMapping
     @Transactional
-    public ResponseEntity editarTarefa(@RequestBody @Valid TarefaEditarDTO dados) {
+    public ResponseEntity<?> editarTarefa(@RequestBody @Valid TarefaEditarDTO dados) {
         var tarefa = tarefaRepository.getReferenceById(dados.id());
         tarefa.editar(dados);
 
@@ -67,7 +67,7 @@ public class TarefaController {
 
     @DeleteMapping("/{id}")
     @Transactional
-    public ResponseEntity removerTarefa(@PathVariable Long id) {
+    public ResponseEntity<?> removerTarefa(@PathVariable Long id) {
         tarefaRepository.deleteById(id); //remoção física
 
         return ResponseEntity.noContent().build();

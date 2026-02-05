@@ -25,20 +25,20 @@ public class UsuarioController {
     private UsuarioRepository usuarioRepository;
 
     @GetMapping("/{id}")
-    public ResponseEntity obterUsuarioPeloId(@PathVariable Long id) {
+    public ResponseEntity<?> obterUsuarioPeloId(@PathVariable Long id) {
         var usuario = usuarioRepository.getReferenceById(id);
         return ResponseEntity.ok(new UsuarioListagemDTO(usuario));
     }
 
     @GetMapping
-    public ResponseEntity<Page<UsuarioListagemDTO>> obterTodosUsuarios(@PageableDefault(size = 10) Pageable paginacao) {
+    public ResponseEntity<Page<?>> obterTodosUsuarios(@PageableDefault(size = 10) Pageable paginacao) {
         var usuarios = usuarioRepository.findAll(paginacao).map(UsuarioListagemDTO::new);
         return ResponseEntity.ok(usuarios);
     }
 
     @PostMapping
     @Transactional
-    public ResponseEntity adicionarUsuario(@RequestBody @Valid UsuarioAdicionarDTO dados, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<?> adicionarUsuario(@RequestBody @Valid UsuarioAdicionarDTO dados, UriComponentsBuilder uriBuilder) {
         var usuario = new Usuario(dados);
         usuarioRepository.save(usuario);
 
@@ -49,7 +49,7 @@ public class UsuarioController {
 
     @PutMapping
     @Transactional
-    public ResponseEntity editarUsuario(@RequestBody @Valid UsuarioEditarDTO dados) {
+    public ResponseEntity<?> editarUsuario(@RequestBody @Valid UsuarioEditarDTO dados) {
         var usuario = usuarioRepository.getReferenceById(dados.id());
         usuario.editar(dados);
 
@@ -58,7 +58,7 @@ public class UsuarioController {
 
     @DeleteMapping("/{id}")
     @Transactional
-    public ResponseEntity removerUsuario(@PathVariable Long id) {
+    public ResponseEntity<?> removerUsuario(@PathVariable Long id) {
         var usuario = usuarioRepository.getReferenceById(id);
         usuarioRepository.delete(usuario); //remoção física
 
