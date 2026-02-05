@@ -20,9 +20,9 @@ public class Subtarefa {
 
     public Subtarefa() {}
 
-    public Subtarefa(Long id, String titulo) {
-        this.id = id;
-        this.titulo = titulo;
+    public Subtarefa(SubtarefaAdicionarDTO dados) {
+        this.titulo = dados.titulo();
+        this.tarefa = dados.tarefa();
     }
 
     public Long getId() {

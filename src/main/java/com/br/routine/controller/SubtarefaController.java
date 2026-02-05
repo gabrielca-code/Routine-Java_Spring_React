@@ -1,7 +1,9 @@
 package com.br.routine.controller;
 
 import com.br.routine.model.subtarefa.Subtarefa;
+import com.br.routine.model.subtarefa.SubtarefaAdicionarDTO;
 import com.br.routine.model.subtarefa.SubtarefaEditarDTO;
+import com.br.routine.model.subtarefa.SubtarefaListagemDTO;
 import com.br.routine.repository.SubtarefaRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,11 +28,12 @@ public class SubtarefaController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity adicionarSubtarefa(@RequestBody @Valid Subtarefa subtarefa, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity adicionarSubtarefa(@RequestBody @Valid SubtarefaAdicionarDTO dados, UriComponentsBuilder uriBuilder) {
+        var subtarefa = new Subtarefa(dados);
         var subtarefaCriada = subtarefaRepository.save(subtarefa);
 
         var uri = uriBuilder.path("/subtarefa/{id}").buildAndExpand(subtarefaCriada.getId()).toUri();
-        return ResponseEntity.created(uri).body(subtarefaCriada);
+        return ResponseEntity.created(uri).body(new SubtarefaListagemDTO(subtarefaCriada));
     }
 
     @DeleteMapping("/{id}")
