@@ -7,6 +7,7 @@ public record TarefaEditarDTO(
         @NotNull
         Long id,
         String titulo,
-        String descricao
+        String descricao,
+        Boolean ativa
 ) {
 }

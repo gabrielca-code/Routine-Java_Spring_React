@@ -55,6 +55,8 @@ public class Tarefa {
             this.titulo = dados.titulo();
         if(dados.descricao() != null)
             this.descricao = dados.descricao();
+        if(dados.ativa() != null)
+            this.ativa = dados.ativa();
     }
 
     public void setUsuario(Usuario usuario) {
