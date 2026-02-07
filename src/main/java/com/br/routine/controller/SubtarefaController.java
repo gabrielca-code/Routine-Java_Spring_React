@@ -47,7 +47,7 @@ public class SubtarefaController {
 
     @PutMapping
     @Transactional
-    public ResponseEntity<?> editarSubtarefa(@RequestBody @Valid  SubtarefaEditarDTO dados) {
+    public ResponseEntity<?> editarSubtarefa(@RequestBody @Valid SubtarefaEditarDTO dados) {
         var subtarefa = subtarefaRepository.getReferenceById(dados.id());
         subtarefa.editar(dados);
 
