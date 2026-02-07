@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface TarefaRepository extends JpaRepository<Tarefa, Long> {
 
-    @Query("SELECT * FROM tarefa t WHERE t.ativa = 1")
+    @Query("SELECT t FROM tarefa t WHERE t.ativa = true")
     List<Tarefa> obterTarefasAtivas();
 
 }
