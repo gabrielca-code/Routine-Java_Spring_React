@@ -54,4 +54,8 @@ public class Usuario {
         if(dados.nome()  != null)
             this.nome = dados.nome();
     }
+
+    public void desativarUsuario() {
+        this.ativa = false;
+    }
 }

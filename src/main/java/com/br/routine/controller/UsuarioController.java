@@ -60,7 +60,8 @@ public class UsuarioController {
     @Transactional
     public ResponseEntity<?> removerUsuario(@PathVariable Long id) {
         var usuario = usuarioRepository.getReferenceById(id);
-        usuarioRepository.delete(usuario); //remoção física
+        usuario.desativarUsuario();
+        usuarioRepository.save(usuario); //remoção lógica
 
         return ResponseEntity.noContent().build();
     }
