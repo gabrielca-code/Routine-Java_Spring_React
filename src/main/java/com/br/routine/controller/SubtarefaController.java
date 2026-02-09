@@ -21,11 +21,13 @@ public class SubtarefaController {
     @Autowired
     SubtarefaRepository subtarefaRepository;
 
+    /*
     @GetMapping("/{id}")
     public ResponseEntity<List<?>> listarTodasSubtarefas(@PathVariable Long id) {
         var subtarefas = subtarefaRepository.findAll().stream().map(SubtarefaListagemDTO::new).toList();
         return ResponseEntity.ok(subtarefas);
     }
+    */
 
     @PostMapping
     @Transactional

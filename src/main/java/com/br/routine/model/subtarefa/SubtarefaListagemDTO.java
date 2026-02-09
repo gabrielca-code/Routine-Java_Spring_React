@@ -5,12 +5,10 @@ import com.br.routine.model.tarefa.TarefaListagemDTO;
 
 public record SubtarefaListagemDTO(
         Long id,
-        String titulo,
-        TarefaListagemDTO tarefa
-) {
+        String titulo) {
 
     public SubtarefaListagemDTO(Subtarefa subtarefa) {
-        this(subtarefa.getId(), subtarefa.getTitulo(), new TarefaListagemDTO(subtarefa.getTarefa()));
+        this(subtarefa.getId(), subtarefa.getTitulo());
     }
 
 }

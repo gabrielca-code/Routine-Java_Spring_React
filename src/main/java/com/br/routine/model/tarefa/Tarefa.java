@@ -54,6 +54,10 @@ public class Tarefa {
         return usuario;
     }
 
+    public List<Subtarefa> getSubtarefas() {
+        return subtarefas;
+    }
+
     public boolean isAtiva() {
         return ativa;
     }
