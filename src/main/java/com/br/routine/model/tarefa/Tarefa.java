@@ -1,9 +1,13 @@
 package com.br.routine.model.tarefa;
 
+import com.br.routine.model.subtarefa.Subtarefa;
 import com.br.routine.model.usuario.Usuario;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "tarefa")
 @Table(name = "tarefa")
@@ -19,6 +23,9 @@ public class Tarefa {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idUsuario")
     private Usuario usuario;
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idTarefa")
+    private List<Subtarefa> subtarefas;
     private Boolean ativa;
 
     public Tarefa() {}
@@ -27,6 +34,7 @@ public class Tarefa {
         this.titulo = dados.titulo();
         this.descricao = dados.descricao();
         this.usuario = dados.usuario();
+        this.subtarefas = new ArrayList<Subtarefa>();
         this.ativa = true;
     }
 
