@@ -70,7 +70,9 @@ public class TarefaController {
     @DeleteMapping("/{id}")
     @Transactional
     public ResponseEntity<?> removerTarefa(@PathVariable Long id) {
-        tarefaRepository.deleteById(id); //remoção física
+        var tarefa = tarefaRepository.getReferenceById(id);
+        tarefa.desativarTarefa();
+        tarefaRepository.save(tarefa);
 
         return ResponseEntity.noContent().build();
     }

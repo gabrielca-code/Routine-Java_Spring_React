@@ -62,4 +62,8 @@ public class Tarefa {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
+
+    public void desativarTarefa() {
+        this.ativa = false;
+    }
 }
