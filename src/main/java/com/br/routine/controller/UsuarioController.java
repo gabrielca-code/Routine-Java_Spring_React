@@ -32,7 +32,7 @@ public class UsuarioController {
 
     @GetMapping
     public ResponseEntity<Page<?>> listarTodosUsuarios(@PageableDefault(size = 10) Pageable paginacao) {
-        var usuarios = usuarioRepository.findAll(paginacao).map(UsuarioListagemDTO::new);
+        var usuarios = usuarioRepository.findAllUsuarioAtivos(paginacao).map(UsuarioListagemDTO::new);
         return ResponseEntity.ok(usuarios);
     }
 
