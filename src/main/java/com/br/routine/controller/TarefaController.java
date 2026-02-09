@@ -30,10 +30,8 @@ public class TarefaController {
 
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping
-    public ResponseEntity<List<?>> listarTodasTarefas(@PageableDefault(size = 10, sort = {"titulo"}) Pageable paginacao) {
-        //var tarefas = tarefaRepository.findAll(paginacao).map(TarefaListagemDTO::new);
-
-        var tarefas2 = tarefaRepository.obterTarefasAtivas().stream().map(TarefaListagemDTO::new).toList();
+    public ResponseEntity<Page<?>> listarTodasTarefas(@PageableDefault(size = 10, sort = {"titulo"}) Pageable paginacao) {
+        var tarefas2 = tarefaRepository.obterTarefasAtivas(paginacao).map(TarefaListagemDTO::new);
 
         return ResponseEntity.ok(tarefas2);
     }
