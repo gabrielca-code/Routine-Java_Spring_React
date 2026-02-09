@@ -1,16 +1,17 @@
 package com.br.routine.model.tarefa;
 
 import com.br.routine.model.usuario.Usuario;
+import com.br.routine.model.usuario.UsuarioListagemDTO;
 
 public record TarefaListagemDTO(
         Long id,
         String titulo,
         String descricao,
-        Usuario usuario,
+        UsuarioListagemDTO usuario,
         Boolean ativa
 ) {
 
     public TarefaListagemDTO(Tarefa tarefa) {
-        this(tarefa.getId(), tarefa.getTitulo(), tarefa.getDescricao(), tarefa.getUsuario(), tarefa.isAtiva());
+        this(tarefa.getId(), tarefa.getTitulo(), tarefa.getDescricao(), new UsuarioListagemDTO(tarefa.getUsuario()), tarefa.isAtiva());
     }
 }
