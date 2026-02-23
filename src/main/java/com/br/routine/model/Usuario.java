@@ -1,7 +1,8 @@
-package com.br.routine.model.usuario;
+package com.br.routine.model;
 
+import com.br.routine.dto.usuario.UsuarioAdicionarDTO;
+import com.br.routine.dto.usuario.UsuarioEditarDTO;
 import jakarta.persistence.*;
-import tools.jackson.databind.annotation.JsonSerialize;
 
 @Entity(name = "usuario")
 @Table(name = "usuario")

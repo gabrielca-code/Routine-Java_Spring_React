@@ -1,10 +1,9 @@
-package com.br.routine.model.tarefa;
+package com.br.routine.dto.tarefa;
 
-import com.br.routine.model.subtarefa.SubtarefaListagemDTO;
-import com.br.routine.model.usuario.Usuario;
-import com.br.routine.model.usuario.UsuarioListagemDTO;
+import com.br.routine.dto.subtarefa.SubtarefaListagemDTO;
+import com.br.routine.model.Tarefa;
+import com.br.routine.dto.usuario.UsuarioListagemDTO;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public record TarefaListagemDTO(

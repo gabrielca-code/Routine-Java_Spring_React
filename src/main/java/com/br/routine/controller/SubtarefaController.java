@@ -1,9 +1,9 @@
 package com.br.routine.controller;
 
-import com.br.routine.model.subtarefa.Subtarefa;
-import com.br.routine.model.subtarefa.SubtarefaAdicionarDTO;
-import com.br.routine.model.subtarefa.SubtarefaEditarDTO;
-import com.br.routine.model.subtarefa.SubtarefaListagemDTO;
+import com.br.routine.model.Subtarefa;
+import com.br.routine.dto.subtarefa.SubtarefaAdicionarDTO;
+import com.br.routine.dto.subtarefa.SubtarefaEditarDTO;
+import com.br.routine.dto.subtarefa.SubtarefaListagemDTO;
 import com.br.routine.repository.SubtarefaRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @RestController
 @RequestMapping("/subtarefa")

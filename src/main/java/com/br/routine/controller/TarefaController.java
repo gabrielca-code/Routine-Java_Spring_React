@@ -1,9 +1,9 @@
 package com.br.routine.controller;
 
-import com.br.routine.model.tarefa.Tarefa;
-import com.br.routine.model.tarefa.TarefaAdicionarDTO;
-import com.br.routine.model.tarefa.TarefaEditarDTO;
-import com.br.routine.model.tarefa.TarefaListagemDTO;
+import com.br.routine.model.Tarefa;
+import com.br.routine.dto.tarefa.TarefaAdicionarDTO;
+import com.br.routine.dto.tarefa.TarefaEditarDTO;
+import com.br.routine.dto.tarefa.TarefaListagemDTO;
 import com.br.routine.repository.TarefaRepository;
 import com.br.routine.repository.UsuarioRepository;
 import jakarta.transaction.Transactional;
@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @RestController
 @RequestMapping("tarefa")

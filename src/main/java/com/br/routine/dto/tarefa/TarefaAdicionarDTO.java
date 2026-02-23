@@ -1,6 +1,6 @@
-package com.br.routine.model.tarefa;
+package com.br.routine.dto.tarefa;
 
-import com.br.routine.model.usuario.Usuario;
+import com.br.routine.model.Usuario;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;

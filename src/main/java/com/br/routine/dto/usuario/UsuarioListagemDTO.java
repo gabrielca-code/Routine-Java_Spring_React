@@ -1,6 +1,6 @@
-package com.br.routine.model.usuario;
+package com.br.routine.dto.usuario;
 
-import com.br.routine.model.tarefa.Tarefa;
+import com.br.routine.model.Usuario;
 
 public record UsuarioListagemDTO(
         Long id,

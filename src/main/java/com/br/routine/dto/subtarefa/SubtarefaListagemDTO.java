@@ -1,7 +1,6 @@
-package com.br.routine.model.subtarefa;
+package com.br.routine.dto.subtarefa;
 
-import com.br.routine.model.tarefa.Tarefa;
-import com.br.routine.model.tarefa.TarefaListagemDTO;
+import com.br.routine.model.Subtarefa;
 
 public record SubtarefaListagemDTO(
         Long id,

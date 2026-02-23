@@ -1,4 +1,4 @@
-package com.br.routine.model.subtarefa;
+package com.br.routine.dto.subtarefa;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;

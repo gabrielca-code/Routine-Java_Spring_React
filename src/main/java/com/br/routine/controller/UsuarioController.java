@@ -1,9 +1,9 @@
 package com.br.routine.controller;
 
-import com.br.routine.model.usuario.Usuario;
-import com.br.routine.model.usuario.UsuarioAdicionarDTO;
-import com.br.routine.model.usuario.UsuarioEditarDTO;
-import com.br.routine.model.usuario.UsuarioListagemDTO;
+import com.br.routine.model.Usuario;
+import com.br.routine.dto.usuario.UsuarioAdicionarDTO;
+import com.br.routine.dto.usuario.UsuarioEditarDTO;
+import com.br.routine.dto.usuario.UsuarioListagemDTO;
 import com.br.routine.repository.UsuarioRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @RestController
 @RequestMapping("/usuario")

@@ -1,6 +1,7 @@
-package com.br.routine.model.subtarefa;
+package com.br.routine.model;
 
-import com.br.routine.model.tarefa.Tarefa;
+import com.br.routine.dto.subtarefa.SubtarefaAdicionarDTO;
+import com.br.routine.dto.subtarefa.SubtarefaEditarDTO;
 import jakarta.persistence.*;
 
 @Entity(name = "subtarefa")

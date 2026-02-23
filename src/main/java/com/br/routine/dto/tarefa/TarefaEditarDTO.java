@@ -1,4 +1,4 @@
-package com.br.routine.model.tarefa;
+package com.br.routine.dto.tarefa;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;

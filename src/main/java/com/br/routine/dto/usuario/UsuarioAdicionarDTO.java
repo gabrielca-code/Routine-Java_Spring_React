@@ -1,4 +1,4 @@
-package com.br.routine.model.usuario;
+package com.br.routine.dto.usuario;
 
 import javax.validation.constraints.NotBlank;
 

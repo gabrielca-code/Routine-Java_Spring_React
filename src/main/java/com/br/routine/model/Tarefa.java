@@ -1,10 +1,8 @@
-package com.br.routine.model.tarefa;
+package com.br.routine.model;
 
-import com.br.routine.model.subtarefa.Subtarefa;
-import com.br.routine.model.usuario.Usuario;
+import com.br.routine.dto.tarefa.TarefaAdicionarDTO;
+import com.br.routine.dto.tarefa.TarefaEditarDTO;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
