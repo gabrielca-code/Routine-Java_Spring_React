@@ -1,4 +1,4 @@
-package com.br.routine.infra;
+package com.br.routine.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
