@@ -1,4 +1,4 @@
-package com.br.routine.config;
+package com.br.routine.exception;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.ResponseEntity;
